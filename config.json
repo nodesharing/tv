@@ -1,9 +1,9 @@
 {
     "email_settings": {
-        "from_email": "man_kingdom@hotmail.com",
-        "smtp_server": "smtp-mail.outlook.com",
-        "smtp_port": 587,
-        "to_email": "37037825@@qq.com.cn"
+        "from_email": "3024163484@qq.com",
+        "smtp_server": "smtp.qq.com",
+        "smtp_port": 465,
+        "to_email": "37037825@qq.com"
     },
     "api_settings": {
         "url": "https://devapi.qweather.com/v7/warning/now",
