@@ -1,0 +1,24 @@
+{
+    "email_settings": {
+        "from_email": "man_kingdom@hotmail.com",
+        "smtp_server": "smtp-mail.outlook.com",
+        "smtp_port": 587,
+        "to_email": "37037825@app.com.cn"
+    },
+    "api_settings": {
+        "url": "https://devapi.qweather.com/v7/warning/now",
+        "key": "0ee43c0bddfd4e9da3fb0eed06b09127",
+        "cities": [
+            ["开封", "101180801"],
+            ["兰考", "101180805"],
+            ["菏泽", "101121001"],
+            ["曹县", "101121007"],
+            ["长沙", "101250101"],
+            ["淄博", "101120301"],
+            ["儋州", "101310205"],
+            ["宁波", "101210401"],
+            ["盐城", "101190701"],
+            ["昆山", "101190404"]
+        ]
+    }  
+}
