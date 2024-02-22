@@ -1,0 +1,36 @@
+name: Run Weather Warning Script
+
+on:
+  schedule:
+    # 每6小时运行一次
+    - cron: '0 */6 * * *'
+  workflow_dispatch: # 添加这行来允许手动触发
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8' # 或者你的Python版本
+    - name: Install dependencies
+      run: |
+        pip install requests
+        pip install pandas
+    - name: Run script
+      run: python run_github.py
+      env:
+        API_KEY: ${{ secrets.API_KEY }}
+        EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+    - name: Commit and push if there are changes
+      run: |
+        git config --global user.email "jinde98@163.com"
+        git config --global user.name "jinde98"
+        git add weather_report.csv
+        git commit -m "Update data" -a || exit 0  # 如果没有更改，退出
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
