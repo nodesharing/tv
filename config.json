@@ -1,7 +1,7 @@
 {
     "email_settings": {
-        "from_email": "man_kingdom@hotmail.com",
-        "smtp_server": "smtp-mail.outlook.com",
+        "from_email": "3024163484@qq.com",
+        "smtp_server": "smtp-mail.qq.com",
         "smtp_port": 587,
         "to_email": "huaguorong@app.com.cn"
     },
