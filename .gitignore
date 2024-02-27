@@ -1,6 +1,0 @@
-*.log
-*.spec
-
-__pycache__
-build
-dist
