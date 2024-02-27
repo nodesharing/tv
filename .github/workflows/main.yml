@@ -1,36 +1,43 @@
-name: Run Weather Warning Script
+name: itvlist
 
 on:
   schedule:
-    # 每6小时运行一次
-    - cron: '0 */6 * * *'
-  workflow_dispatch: # 添加这行来允许手动触发
+    - cron: '0 2,6,10,14,18,22 * * *'
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.8' # 或者你的Python版本
-    - name: Install dependencies
-      run: |
-        pip install requests
-        pip install pandas
-    - name: Run script
-      run: python run_github.py
-      env:
-        API_KEY: ${{ secrets.API_KEY }}
-        EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
-    - name: Commit and push if there are changes
-      run: |
-        git config --global user.email "jinde98@163.com"
-        git config --global user.name "jinde98"
-        git add weather_report.csv
-        git commit -m "Update data" -a || exit 0  # 如果没有更改，退出
-        git push
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Checkout code
+        uses: actions/checkout@v2
+    
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+
+      - name: Install dependencies
+        run: pip install selenium requests futures eventlet
+
+      - name: Run itv
+        run: python ${{ github.workspace }}/itv.py
+
+      - name: Run cctv
+        run: python ${{ github.workspace }}/cctv.py
+        
+      - name: Run weishi
+        run: python ${{ github.workspace }}/weishi.py
+        
+      - name: Run qita
+        run: python ${{ github.workspace }}/qita.py
+        
+      - name: 提交更改
+        run: |
+          git config --local user.email "ssili@126.com"
+          git config --local user.name "ssili126"
+          git add .
+          git commit *.txt -m "Add generated file"
+          git commit *.m3u -m "Add generated file"
+          #git pull --rebase
+          git push -f
