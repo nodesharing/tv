@@ -1,4 +1,4 @@
-https://github.com/ssili126/tv/actions
+https://github.com/ssili126/tv/
 # 自动获取酒店源 #
 
 使用方法：
